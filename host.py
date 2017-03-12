@@ -7,19 +7,21 @@ import event
 import packet
 
 class host(object):
-    def __init__(self):
-        current_time = 0
+    def __init__(self, arrival_rate):
+        self.current_time = 0
+        self.MAXBUFFER = 0  # infinite Buffer
+        self.arrival_rate = arrival_rate
 
 # configurations
-MAXBUFFER = int(input("Please enter the MAXBUFFER size for the packets queue: "))
+# MAXBUFFER = int(input("Please enter the MAXBUFFER size for the packets queue: "))
 service_rate = float(input("Please enter the service rate: "))
-arrival_rate = float(input("Please enter the arrival rate: "))
-
+# arrival_rate = float(input("Please enter the arrival rate: "))
+def generate_frame_size():
+    u = random.random()
+    return ((-1 / 1544) * log(1 - u))
 def generate_arrival_time():
     u = random.random()
-    a = ((-1 / arrival_rate) * log(1 - u))
-    return(1 * exp(a))
-    # return a
+    return ((-1 / arrival_rate) * log(1 - u))
 def generate_service_time():
     u = random.random()
     return ((-1 / service_rate) * log(1 - u))
