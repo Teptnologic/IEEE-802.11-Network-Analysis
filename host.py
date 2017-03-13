@@ -11,6 +11,10 @@ class host(object):
         self.current_time = 0
         self.MAXBUFFER = 0  # infinite Buffer
         self.arrival_rate = arrival_rate
+        self.state = 'idle'
+
+    def getState(self):
+        return self.state
 
 # configurations
 # MAXBUFFER = int(input("Please enter the MAXBUFFER size for the packets queue: "))

@@ -4,6 +4,8 @@ import packet
 import host
 
 # SIFS = 0.05 msec and DIFS = 0.1 msec. Your CSMA/CA implementation can sense the channel every 0.01 msec.
+# the wireless channel capacity is 11 Mbps
+
 # number_of_host = int(input("Please enter number of hosts: "))
 number_of_host = 10
 
