@@ -6,34 +6,75 @@ import GEL
 import event
 import packet
 
+MAX_DIFS = 5
+MAX_SIFS = 5
+DEFAULT_BACKOFF = 10
 
 class host(object):
     def __init__(self, arrival_rate):
-        self.current_time = 0
-        self.MAXBUFFER = 0  # infinite Buffer
         self.arrival_rate = arrival_rate
-        self.state = 'idle'
+        self.reset()
 
-    def getState(self):
-        return self.state
+    def reset(self):
+        self.frames = []
+        self.backoff = -1
+        self.difs = global MAX_DIFS
+        self.sifs = global MAX_SIFS
+
+    def timestep(self, channel_is_idle):
+        if len(self.frames) == 0: # is idle
+            return
+        if True: # wants to send data frame # TODO: Implement this condition
+            if channel_is_idle:
+                if self.backoff == -1: # is difs state
+                    if self.difs != 0:
+                        self.difs -= 1
+                    else:
+                        self.send_data_frame()
+                else: # is backoff state
+                    if self.backoff != 0:
+                        self.backoff -= 1
+                    else:
+                        self.send_data_frame()
+            else:
+                if self.backoff == -1: # is difs state
+                    self.backoff = DEFAULT_BACKOFF
+                    self.difs = -1
+                else: # is backoff state
+                    # do nothing
+        else: # wants to send ack frame
+            if self.sifs != 0:
+                self.sifs = -1
+            else:
+                self.send_ack_frame()
+
+    def send_data_frame(self):
+        # TODO: Implement this method
+        reset()
+
+    def send_ack_frame(self):
+        # TODO: Implement this method
+        reset()
+
+    def is_idle(self):
+        return
 
     def generate_frame_size():
         u = random.random()
         return ((-1 / 1544) * log(1 - u))
+
     def generate_arrival_time():
         u = random.random()
         return ((-1 / arrival_rate) * log(1 - u))
+
     def generate_service_time():
-        # u = random.random()
-        # return ((-1 / service_rate) * log(1 - u))
         return 5  # SIFS = 0.05 msec
+
     def generate_packet():
         return packet.Packet(generate_service_time())
 
 # configurations
-# MAXBUFFER = int(input("Please enter the MAXBUFFER size for the packets queue: "))
 service_rate = float(input("Please enter the service rate: "))
-
 
 # statistics
 total_server_busy_time = 0
