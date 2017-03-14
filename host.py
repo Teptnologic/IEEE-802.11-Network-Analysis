@@ -6,6 +6,7 @@ import GEL
 import event
 import packet
 
+
 class host(object):
     def __init__(self, arrival_rate):
         self.current_time = 0
@@ -16,21 +17,23 @@ class host(object):
     def getState(self):
         return self.state
 
+    def generate_frame_size():
+        u = random.random()
+        return ((-1 / 1544) * log(1 - u))
+    def generate_arrival_time():
+        u = random.random()
+        return ((-1 / arrival_rate) * log(1 - u))
+    def generate_service_time():
+        # u = random.random()
+        # return ((-1 / service_rate) * log(1 - u))
+        return 5  # SIFS = 0.05 msec
+    def generate_packet():
+        return packet.Packet(generate_service_time())
+
 # configurations
 # MAXBUFFER = int(input("Please enter the MAXBUFFER size for the packets queue: "))
 service_rate = float(input("Please enter the service rate: "))
-# arrival_rate = float(input("Please enter the arrival rate: "))
-def generate_frame_size():
-    u = random.random()
-    return ((-1 / 1544) * log(1 - u))
-def generate_arrival_time():
-    u = random.random()
-    return ((-1 / arrival_rate) * log(1 - u))
-def generate_service_time():
-    u = random.random()
-    return ((-1 / service_rate) * log(1 - u))
-def generate_packet():
-    return packet.Packet(generate_service_time())
+
 
 # statistics
 total_server_busy_time = 0
