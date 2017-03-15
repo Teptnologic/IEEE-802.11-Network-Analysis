@@ -3,7 +3,7 @@ import random
 import host
 import frame
 
-
+# constants
 # a host can sense the channel every 0.01 msec
 BASE_TIME = 100  # 0.01 ms * BASE_TIME = 1 ms
 ACK_PROCESS_TIME = 64 * 8 / (11 * (10 ** 6)) * (10 ** 3) * BASE_TIME
@@ -15,6 +15,7 @@ BITS_PER_BYTE = 8
 WIRELESS_CAPACITY = (11 * (10 ** 6))  # 11 Mbps
 SENSE_CHANNEL_INTERVAL = 100  # 0.01 ms
 
+# configurations
 # backoff_time_cap = float(input("Please enter the backoff time cap (ms): "))
 backoff_time_cap = 10
 # arrival_rate = float(input("Please enter the arrival rate: "))
@@ -47,17 +48,24 @@ def generate_destination():
     return int(u * number_of_host)
 
 
+# statistics
+conflict_times = 0
+
+# initializations
 hosts = []
 arrival_times = []
 channel = []
-
 for i in range(number_of_host):
     hosts.append(host.Host(DEFAULT_DIFS, DEFAULT_SIFS))
     arrival_times.append(generate_arrival_time())
 
-for current_time in range(1 * (10 ** 3) * BASE_TIME):
+# main
+for current_time in range(10 * (10 ** 3) * BASE_TIME):
     channel_is_idle = len(channel) == 0
     channel_has_conflicts = len(channel) > 1
+    # update statistics
+    if channel_has_conflicts:
+        conflict_times += 1
     # schedule data frames
     for i in range(number_of_host):
         current_host = hosts[i]
@@ -91,8 +99,11 @@ for current_time in range(1 * (10 ** 3) * BASE_TIME):
     for current_host in hosts:
         data_frame = current_host.sent_frame(
             channel_is_idle,
-            generate_backoff_time
+            generate_backoff_time()
         )
         if data_frame is not None:
             channel.append(data_frame)
             current_host.reset(DEFAULT_DIFS, DEFAULT_SIFS)
+
+# results
+print(conflict_times)
