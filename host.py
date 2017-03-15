@@ -1,4 +1,4 @@
-class host(object):
+class Host(object):
     def __init__(self, difs, sifs):
         self.frames = []
         self.reset(difs, sifs)
@@ -12,7 +12,7 @@ class host(object):
         self.frames.append(frame)
 
     def sent_frame(self, channel_is_idle, default_backoff):
-        if self.frames.qsize() == 0:  # is idle
+        if len(self.frames) == 0:  # is idle
             return
         if self.frames[0].is_ack is False:  # wants to send data frame
             if channel_is_idle:

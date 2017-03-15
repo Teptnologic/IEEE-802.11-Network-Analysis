@@ -51,7 +51,7 @@ hosts = []
 arrival_times = []
 channel = []
 
-for i in number_of_host:
+for i in range(number_of_host):
     hosts.append(host.Host(DEFAULT_DIFS, DEFAULT_SIFS))
     arrival_times.append(generate_arrival_time())
 
@@ -59,7 +59,7 @@ for current_time in range(1 * (10 ** 3) * BASE_TIME):
     channel_is_idle = len(channel) == 0
     channel_has_conflicts = len(channel) > 1
     # schedule data frames
-    for i in number_of_host:
+    for i in range(number_of_host):
         current_host = hosts[i]
         arrival_time = arrival_times[i]
         if arrival_time <= 0:
@@ -84,9 +84,9 @@ for current_time in range(1 * (10 ** 3) * BASE_TIME):
                 current_frame.source,
                 True,
             )
-            current_frame.destination.schedule(ack_frame)
+            hosts[current_frame.destination].schedule(ack_frame)
     # remove delivered frames in channel
-    channel[:] = [x for x in channel if x.time > 0]
+    channel[:] = [x for x in channel if x.process_time > 0]
     # send frames
     for current_host in hosts:
         data_frame = current_host.sent_frame(
@@ -95,4 +95,4 @@ for current_time in range(1 * (10 ** 3) * BASE_TIME):
         )
         if data_frame is not None:
             channel.append(data_frame)
-            current_host.reset()
+            current_host.reset(DEFAULT_DIFS, DEFAULT_SIFS)
