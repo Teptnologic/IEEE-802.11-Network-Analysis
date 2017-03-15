@@ -85,7 +85,7 @@ for current_time in range(SIMULATION_TIME):
     # update frames in channel
     for current_frame in channel:
         current_frame.process_time -= 1
-        current_frame.is_dirty = channel_has_conflicts
+        current_frame.is_dirty = current_frame.is_dirty or channel_has_conflicts
         if current_frame.process_time <= 0 and not current_frame.is_dirty:
             if current_frame.is_ack:  # received ack frame
                 # complete timer
