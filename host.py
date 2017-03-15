@@ -1,9 +1,6 @@
-import queue
-
-
 class host(object):
     def __init__(self, difs, sifs):
-        self.frames = queue.Queue(0)
+        self.frames = []
         self.reset(difs, sifs)
 
     def reset(self, difs, sifs):
@@ -12,23 +9,23 @@ class host(object):
         self.backoff = -1
 
     def schedule(self, frame):
-        self.frames.put(frame)
+        self.frames.append(frame)
 
     def sent_frame(self, channel_is_idle, default_backoff):
         if self.frames.qsize() == 0:  # is idle
             return
-        if True:  # wants to send data frame # TODO: Implement this condition
+        if self.frames[0].is_ack is False:  # wants to send data frame
             if channel_is_idle:
                 if self.backoff == -1:  # is difs state
                     if self.difs > 0:
                         self.difs -= 1
                     else:
-                        return self.frames.get()
+                        return self.frames.pop(0)
                 else:  # is backoff state
                     if self.backoff > 0:
                         self.backoff -= 1
                     else:
-                        return self.frames.get()
+                        return self.frames.pop(0)
             else:
                 if self.backoff == -1:  # is difs state
                     self.backoff = default_backoff
@@ -37,4 +34,4 @@ class host(object):
             if self.sifs > 0:
                 self.sifs = -1
             else:
-                return self.frames.get()
+                return self.frames.pop(0)

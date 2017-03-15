@@ -15,6 +15,8 @@ BITS_PER_BYTE = 8
 WIRELESS_CAPACITY = (11 * (10 ** 6))  # 11 Mbps
 SENSE_CHANNEL_INTERVAL = 100  # 0.01 ms
 
+# backoff_time_cap = float(input("Please enter the backoff time cap (ms): "))
+backoff_time_cap = 10
 # arrival_rate = float(input("Please enter the arrival rate: "))
 arrival_rate = 0.1
 # number_of_host = int(input("Please enter number of hosts: "))
@@ -29,6 +31,11 @@ def generate_frame_size():
 def generate_arrival_time():
     u = random.random()
     return ((-1 / arrival_rate) * log(1 - u)) * (10 ** 3) * BASE_TIME
+
+
+def generate_backoff_time():
+    u = random.random()
+    return u * backoff_time_cap * BASE_TIME
 
 
 def generate_process_time():
@@ -82,7 +89,10 @@ for current_time in range(1 * (10 ** 3) * BASE_TIME):
     channel[:] = [x for x in channel if x.time > 0]
     # send frames
     for current_host in hosts:
-        data_frame = current_host.sent_frame(channel_is_idle, DEFAULT_BACKOFF)
+        data_frame = current_host.sent_frame(
+            channel_is_idle,
+            generate_backoff_time
+        )
         if data_frame is not None:
             channel.append(data_frame)
             current_host.reset()
