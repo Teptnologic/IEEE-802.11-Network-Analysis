@@ -1,0 +1,336 @@
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.01
+number of hosts: 10
+--------------------------------------
+Throughput: 0 bytes/s
+Average network delay: None s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.05
+number of hosts: 10
+--------------------------------------
+Throughput: 711206.951969 bytes/s
+Average network delay: 0.00631742981078 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.1
+number of hosts: 10
+--------------------------------------
+Throughput: 6939.73018312 bytes/s
+Average network delay: 0.474946419101 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.3
+number of hosts: 10
+--------------------------------------
+Throughput: 206530.781003 bytes/s
+Average network delay: 0.0150921813439 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.6
+number of hosts: 10
+--------------------------------------
+Throughput: 2064247.9698 bytes/s
+Average network delay: 0.0132779590441 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.8
+number of hosts: 10
+--------------------------------------
+Throughput: 2269277.15966 bytes/s
+Average network delay: 0.0275686906439 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.9
+number of hosts: 10
+--------------------------------------
+Throughput: 2862429.71111 bytes/s
+Average network delay: 0.0178879501569 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.01
+number of hosts: 20
+--------------------------------------
+Throughput: 196.595742458 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.05
+number of hosts: 20
+--------------------------------------
+Throughput: 1097.97183991 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.1
+number of hosts: 20
+--------------------------------------
+Throughput: 539181.295775 bytes/s
+Average network delay: 0.0152156613449 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.3
+number of hosts: 20
+--------------------------------------
+Throughput: 309547.527959 bytes/s
+Average network delay: 0.015335286414 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.6
+number of hosts: 20
+--------------------------------------
+Throughput: 3304821.4444 bytes/s
+Average network delay: 0.0119510238797 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.8
+number of hosts: 20
+--------------------------------------
+Throughput: 2839645.34038 bytes/s
+Average network delay: 0.0240223661138 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 5
+the arrival rate: 0.9
+number of hosts: 20
+--------------------------------------
+Throughput: 1450498.51026 bytes/s
+Average network delay: 0.0271065428346 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.01
+number of hosts: 10
+--------------------------------------
+Throughput: 67.9859650036 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.05
+number of hosts: 10
+--------------------------------------
+Throughput: 477570.365465 bytes/s
+Average network delay: 0.0109428900491 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.1
+number of hosts: 10
+--------------------------------------
+Throughput: 2083.77429688 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.3
+number of hosts: 10
+--------------------------------------
+Throughput: 30928.9774211 bytes/s
+Average network delay: 0.0239257829292 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.6
+number of hosts: 10
+--------------------------------------
+Throughput: 1245305.85564 bytes/s
+Average network delay: 0.0228313388805 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.8
+number of hosts: 10
+--------------------------------------
+Throughput: 1224929.92464 bytes/s
+Average network delay: 0.0166050315132 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.9
+number of hosts: 10
+--------------------------------------
+Throughput: 831430.99338 bytes/s
+Average network delay: 0.0341700035556 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.01
+number of hosts: 20
+--------------------------------------
+Throughput: 174.463623481 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.05
+number of hosts: 20
+--------------------------------------
+Throughput: 44862.8582897 bytes/s
+Average network delay: 0.0148675324183 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.1
+number of hosts: 20
+--------------------------------------
+Throughput: 21944.4490703 bytes/s
+Average network delay: 0.0315341705678 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.3
+number of hosts: 20
+--------------------------------------
+Throughput: 108161.603677 bytes/s
+Average network delay: 0.041659885272 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.6
+number of hosts: 20
+--------------------------------------
+Throughput: 1673428.87876 bytes/s
+Average network delay: 0.0186485367834 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.8
+number of hosts: 20
+--------------------------------------
+Throughput: 966501.403959 bytes/s
+Average network delay: 0.0156626777137 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 10
+the arrival rate: 0.9
+number of hosts: 20
+--------------------------------------
+Throughput: 1580933.09282 bytes/s
+Average network delay: 0.0272339166 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.01
+number of hosts: 10
+--------------------------------------
+Throughput: 228.230421584 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.05
+number of hosts: 10
+--------------------------------------
+Throughput: 144357.007878 bytes/s
+Average network delay: 0.00511925268375 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.1
+number of hosts: 10
+--------------------------------------
+Throughput: 5270.78720014 bytes/s
+Average network delay: 0.0290279220523 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.3
+number of hosts: 10
+--------------------------------------
+Throughput: 42190.8535713 bytes/s
+Average network delay: 0.0257401760826 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.6
+number of hosts: 10
+--------------------------------------
+Throughput: 392756.920891 bytes/s
+Average network delay: 0.0195362566307 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.8
+number of hosts: 10
+--------------------------------------
+Throughput: 367982.071433 bytes/s
+Average network delay: 0.0309172671258 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.9
+number of hosts: 10
+--------------------------------------
+Throughput: 986136.981924 bytes/s
+Average network delay: 0.0213651859592 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.01
+number of hosts: 20
+--------------------------------------
+Throughput: 670.546819518 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.05
+number of hosts: 20
+--------------------------------------
+Throughput: 1983.24290814 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.1
+number of hosts: 20
+--------------------------------------
+Throughput: 3459.20241729 bytes/s
+Average network delay: 0.0 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.3
+number of hosts: 20
+--------------------------------------
+Throughput: 365145.185194 bytes/s
+Average network delay: 0.018778831758 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.6
+number of hosts: 20
+--------------------------------------
+Throughput: 619597.296113 bytes/s
+Average network delay: 0.0221498707081 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.8
+number of hosts: 20
+--------------------------------------
+Throughput: 705070.382673 bytes/s
+Average network delay: 0.0155828414723 s
+--------------------------------------
+the backoff time cap (ms): 10
+the timeout (ms): 15
+the arrival rate: 0.9
+number of hosts: 20
+--------------------------------------
+Throughput: 663964.339023 bytes/s
+Average network delay: 0.0350741728604 s
+--------------------------------------

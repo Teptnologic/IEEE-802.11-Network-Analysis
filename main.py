@@ -2,6 +2,7 @@ from math import log
 import random
 import host
 import frame
+import sys
 
 # constants
 # a host can sense the channel every 0.01 msec
@@ -9,7 +10,6 @@ MAX_FRAME_SIZE = 1544
 ACK_FRAME_SIZE = 64
 BITS_PER_BYTE = 8
 WIRELESS_CAPACITY = (11 * (10 ** 6))  # 11 Mbps
-SENSE_CHANNEL_INTERVAL = 100  # 0.01 ms
 BASE_TIME = 100  # 0.01 ms * BASE_TIME = 1 ms
 TRANSMISSION_SPEED = (11 * (10 ** 6)) / ((10 ** 3) * BASE_TIME)
 SIMULATION_TIME = 10 * (10 ** 3) * BASE_TIME  # 10 s
@@ -43,10 +43,14 @@ def generate_destination(number_of_host):
 
 
 # configurations
-backoff_time_cap = float(input("Please enter the backoff time cap (ms): "))
-timeout = float(input("Please enter the timeout (ms): "))
-arrival_rate = float(input("Please enter the arrival rate: "))
-number_of_host = int(input("Please enter number of hosts: "))
+backoff_time_cap = float(sys.argv[1])
+print("the backoff time cap (ms): "+sys.argv[1])
+timeout = float(sys.argv[2])
+print("the timeout (ms): "+sys.argv[2])
+arrival_rate = float(sys.argv[3])
+print("the arrival rate: "+sys.argv[3])
+number_of_host = int(sys.argv[4])
+print("number of hosts: "+sys.argv[4])
 
 # statistics
 transmitted_bytes = 0
@@ -63,7 +67,7 @@ for i in range(number_of_host):
 # main
 for current_time in range(SIMULATION_TIME):
     channel_is_idle = len(channel) == 0
-    channel_has_conflicts = len(channel) > 1
+    channel_has_conflict = len(channel) > 1
     # schedule data frames
     for i in range(number_of_host):
         current_host = hosts[i]
@@ -76,7 +80,9 @@ for current_time in range(SIMULATION_TIME):
                 generate_process_time(size),
                 i,
                 generate_destination(number_of_host),
-                False
+                False,
+                size,
+                current_time
             )
             current_host.schedule(data_frame)
             arrival_times[i] = generate_arrival_time(arrival_rate)
@@ -85,26 +91,29 @@ for current_time in range(SIMULATION_TIME):
     # update frames in channel
     for current_frame in channel:
         current_frame.process_time -= 1
-        current_frame.is_dirty = current_frame.is_dirty or channel_has_conflicts
-        if current_frame.process_time <= 0 and not current_frame.is_dirty:
-            if current_frame.is_ack:  # received ack frame
-                # complete timer
-                hosts[current_frame.destination].reset(
-                    DEFAULT_DIFS,
-                    DEFAULT_SIFS
-                )
-            else:  # received data frame
-                transmitted_bytes += current_frame.bytes
-                total_delay += current_time - current_frame.scheduled_time
-                ack_frame = frame.Frame(
-                    ACK_FRAME_SIZE,
-                    current_time,
-                    generate_process_time(ACK_FRAME_SIZE),
-                    current_frame.destination,
-                    current_frame.source,
-                    True,
-                )
-                hosts[current_frame.destination].schedule(ack_frame)
+        current_frame.is_dirty = current_frame.is_dirty or channel_has_conflict
+        if current_frame.process_time <= 0:
+            if not current_frame.is_dirty:  # valid frame transferred
+                if current_frame.is_ack:  # received ack frame
+                    # complete timer
+                    hosts[current_frame.destination].reset(
+                        DEFAULT_DIFS,
+                        DEFAULT_SIFS
+                    )
+                    transmitted_bytes += current_frame.data_frame_size
+                    total_delay += current_frame.data_frame_scheduled_time
+                else:  # received data frame
+                    ack_frame = frame.Frame(
+                        ACK_FRAME_SIZE,
+                        current_time,
+                        generate_process_time(ACK_FRAME_SIZE),
+                        current_frame.destination,
+                        current_frame.source,
+                        True,
+                        current_frame.bytes,
+                        current_frame.scheduled_time
+                    )
+                    hosts[current_frame.destination].schedule(ack_frame)
     # remove delivered frames in channel
     channel[:] = [x for x in channel if x.process_time > 0]
     # send frames
@@ -124,6 +133,12 @@ for current_time in range(SIMULATION_TIME):
 simulation_time_in_seconds = SIMULATION_TIME / (10 ** 3) / BASE_TIME
 total_delay_in_seconds = total_delay / (10 ** 3) / BASE_TIME
 throughput = transmitted_bytes / simulation_time_in_seconds
-average_delay = total_delay_in_seconds / throughput
-print("Throughtput: " + str(throughput) + " bytes/s")
+if throughput != 0:
+    average_delay = total_delay_in_seconds / throughput
+else:
+    average_delay = None
+
+print("--------------------------------------")
+print("Throughput: " + str(throughput) + " bytes/s")
 print("Average network delay: " + str(average_delay) + " s")
+print("--------------------------------------")
